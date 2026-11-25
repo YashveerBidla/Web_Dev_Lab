@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Yashveer | Portfolio</title>
+    <style>
+        :root {
+            --ink: #120d20;
+            --panel: #21142f;
+            --pink: #ff3e9d;
+            --cyan: #40e0d0;
+            --sunset: #ff9c5b;
+            --text: #fff3f8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--ink);
+            background-image: radial-gradient(ellipse at 85% 8%, rgba(255, 62, 157, .19), transparent 32%),
+                radial-gradient(ellipse at 10% 38%, rgba(64, 224, 208, .09), transparent 30%);
+            line-height: 1.7;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: rgba(18, 13, 32, .94);
+            border-bottom: 1px solid rgba(255, 62, 157, .4);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, .35);
+            color: white;
+            padding: 16px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+            color: var(--pink);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 14px rgba(255, 62, 157, .65);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color .2s ease;
+        }
+
+        nav a:hover {
+            color: var(--cyan);
+        }
+
+        .home {
+            min-height: 430px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            align-items: center;
+            gap: 30px;
+            padding: 72px 9%;
+            background: linear-gradient(115deg, rgba(44, 18, 54, .92), rgba(18, 13, 32, .55)),
+                linear-gradient(140deg, #40204b, #171027 65%);
+            border-bottom: 1px solid rgba(64, 224, 208, .22);
+        }
+
+        .home h1 {
+            margin: 0 0 10px;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        .home span {
+            color: var(--pink);
+            text-shadow: 0 0 18px rgba(255, 62, 157, .55);
+        }
+
+        .home h2 {
+            color: var(--cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .home p {
+            max-width: 550px;
+            color: #d8c9df;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(110deg, var(--pink), #c43fff);
+            color: white;
+            padding: 12px 22px;
+            text-decoration: none;
+            margin: 10px 8px 0 0;
+            border: 1px solid rgba(255, 255, 255, .22);
+            border-radius: 3px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 18px rgba(255, 62, 157, .25);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 62, 157, .55);
+        }
+
+        .about,
+        #skills,
+        .projects,
+        .contact {
+            padding: 55px 7%;
+            text-align: center;
+        }
+
+        .about {
+            background: #e2e6eb;
+        }
+
+        .about p {
+            max-width: 780px;
+            margin: 12px auto;
+            color: #d8c9df;
+        }
+
+        section > h2 {
+            margin: 0 0 25px;
+            color: var(--sunset);
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 156, 91, .25);
+        }
+
+        .skills-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .skills-list span {
+            background: rgba(33, 20, 47, .85);
+            color: var(--cyan);
+            padding: 11px 21px;
+            border: 1px solid rgba(64, 224, 208, .42);
+            border-radius: 3px;
+            letter-spacing: .5px;
+            box-shadow: inset 0 0 15px rgba(64, 224, 208, .05);
+        }
+
+        .projects {
+            background: linear-gradient(180deg, rgba(255, 62, 157, .045), transparent);
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            padding: 12px 0;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, rgba(39, 25, 54, .96), rgba(26, 17, 39, .96));
+            border: 1px solid rgba(255, 62, 157, .38);
+            padding: 24px;
+            border-radius: 4px;
+            text-align: left;
+            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .project-card h3 {
+            color: var(--pink);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .project-card p {
+            color: #d8c9df;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+            box-shadow: 0 8px 28px rgba(64, 224, 208, .12);
+        }
+
+        .home img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--pink);
+            box-shadow: 0 0 0 8px rgba(255, 62, 157, .09), 0 0 35px rgba(255, 62, 157, .45);
+        }
+
+        .contact p {
+            color: #d8c9df;
+        }
+
+        footer {
+            background: #0c0814;
+            color: #cbbbd2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 62, 157, .35);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Clean, light portfolio theme */
+        :root {
+            --ink: #f4f7fb;
+            --panel: #ffffff;
+            --pink: #2563eb;
+            --cyan: #0f766e;
+            --sunset: #183153;
+            --text: #243247;
+        }
+
+        body {
+            color: var(--text);
+            background-color: var(--ink);
+            background-image: none;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #dbe3ee;
+            box-shadow: 0 3px 14px rgba(30, 50, 80, .08);
+            color: var(--text);
+        }
+
+        header h2 {
+            text-shadow: none;
+        }
+
+        nav a {
+            color: #334155;
+        }
+
+        .home {
+            background: linear-gradient(135deg, #eaf2ff, #f7f9fc);
+            border-bottom: 1px solid #dbe3ee;
+        }
+
+        .home span {
+            text-shadow: none;
+        }
+
+        .home p,
+        .about p,
+        .project-card p,
+        .contact p {
+            color: #526174;
+        }
+
+        .button {
+            background: var(--pink);
+            border: 1px solid var(--pink);
+            border-radius: 6px;
+            box-shadow: none;
+        }
+
+        .button:hover {
+            box-shadow: 0 5px 14px rgba(37, 99, 235, .2);
+        }
+
+        section > h2 {
+            text-shadow: none;
+        }
+
+        .skills-list span {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            border-radius: 6px;
+            box-shadow: none;
+        }
+
+        .projects {
+            background: #e2e6eb;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #dbe3ee;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(30, 50, 80, .05);
+        }
+
+        .project-card:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 8px 20px rgba(30, 50, 80, .1);
+        }
+
+        .home img {
+            border-color: var(--pink);
+            box-shadow: 0 0 0 8px rgba(37, 99, 235, .08), 0 8px 28px rgba(30, 50, 80, .16);
+        }
+
+        footer {
+            background: #183153;
+            color: #eaf0f7;
+            border-top: 1px solid #183153;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .home {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 55px 7%;
+            }
+
+            .home img {
+                margin: 10px auto 0;
+            }
+
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Nordic, sea-worn styling for the header and footer */
+        header {
+            background-color: #142a38;
+            background-image: radial-gradient(ellipse at 12% 0%, rgba(177, 150, 99, .2), transparent 46%),
+                linear-gradient(110deg, #142a38, #203b49 55%, #142a38);
+            border-bottom: 2px solid #aa925f;
+            box-shadow: 0 4px 18px rgba(17, 36, 48, .22);
+        }
+
+        header h2 {
+            color: #d6c18c;
+            text-shadow: 0 1px 12px rgba(214, 193, 140, .22);
+        }
+
+        nav a {
+            color: #edf0e9;
+        }
+
+        nav a:hover {
+            color: #d6c18c;
+        }
+
+        footer {
+            background-color: #142a38;
+            background-image: radial-gradient(ellipse at 85% 100%, rgba(177, 150, 99, .18), transparent 48%),
+                linear-gradient(110deg, #142a38, #203b49 55%, #142a38);
+            color: #e7e4d9;
+            border-top: 2px solid #aa925f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>My Portfolio</h2>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div>
+            <h1>Heyy, I'm <span>Yashveer</span></h1>
+
+            <h2>Aspiring Web Developer</h2>
+
+            <p>
+                I enjoy learning new technologies, building websites
+                and working on creative projects.
+            </p>
+
+            <a href="#projects" class="button">View My Work</a>
+        </div>
+
+        <img src="https://animecultivated.com/wp-content/uploads/2025/07/thorfinn-banner.webp"
+            alt="Profile Image">
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Me</h2>
+
+        <p>
+            Hello! I'm Yashveer, a Computer Science student interested in
+            web development and technology. I enjoy exploring
+            new ideas, learning programming and building
+            creative projects.
+        </p>
+
+        <p>
+            I am always looking for opportunities to improve
+            my skills and gain practical experience.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+
+        <div class="skills-list">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Python</span>
+            <span>Java</span>
+            <span>Responsive Design</span>
+            <span>3D Design</span>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2>My Projects</h2>
+
+        <div class="project-list">
+
+            <div class="project-card">
+                <h3>Movie Quiz Game</h3>
+
+                <p>
+                    An interactive picture-based quiz game where
+                    players identify movies using visual clues
+                    and test their movie knowledge.
+                </p>
+
+                <p><b>Technologies:</b> HTML, CSS, JavaScript</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Straw Hat Pirates</h3>
+
+                <p>
+                    A creative web project inspired by One Piece,
+                    featuring the Straw Hat Pirates and their
+                    adventures.
+                </p>
+
+                <p><b>Technologies:</b> HTML, CSS, JavaScript</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Personal Portfolio</h3>
+
+                <p>
+                    A personal website created to showcase my
+                    introduction, skills, projects and interests
+                    in web development.
+                </p>
+
+                <p><b>Technologies:</b> HTML, CSS</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+
+        <p>
+            Interested in connecting or working together?
+            Feel free to reach out!
+        </p>
+
+        <a href="https://www.linkedin.com/in/shreya-r-a88783428/" class="button">
+            LinkedIn
+        </a>
+        <a href="https://github.com/YashveerBidla" class="button" target="_blank" rel="noopener noreferrer">
+            GitHub
+        </a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Yashveer. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
